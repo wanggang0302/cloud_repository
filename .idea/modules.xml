@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/cloud_common/cloud_common.iml" filepath="$PROJECT_DIR$/cloud_common/cloud_common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/cloud_data/cloud_data.iml" filepath="$PROJECT_DIR$/cloud_data/cloud_data.iml" />
+      <module fileurl="file://$PROJECT_DIR$/cloud_module/cloud_module.iml" filepath="$PROJECT_DIR$/cloud_module/cloud_module.iml" />
+      <module fileurl="file://$PROJECT_DIR$/cloud_repository.iml" filepath="$PROJECT_DIR$/cloud_repository.iml" />
+      <module fileurl="file://$PROJECT_DIR$/cloud_web/cloud_web.iml" filepath="$PROJECT_DIR$/cloud_web/cloud_web.iml" />
+    </modules>
+  </component>
+</project>
