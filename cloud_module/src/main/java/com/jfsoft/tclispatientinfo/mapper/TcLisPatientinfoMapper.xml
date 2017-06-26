@@ -1,0 +1,652 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jfsoft.mapper.TcLisPatientinfoMapper" >
+	<resultMap id="BaseResultMap" type="com.jfsoft.model.TcLisPatientinfo" >
+		<id column="ID" property="id" jdbcType="INTEGER" />
+		<result column="hospital_code" property="hospitalCode" jdbcType="VARCHAR" />
+		<result column="PatInfoId" property="patinfoid" jdbcType="INTEGER" />
+		<result column="testdate" property="testdate" jdbcType="DATE" />
+		<result column="name" property="name" jdbcType="VARCHAR" />
+		<result column="pycode" property="pycode" jdbcType="VARCHAR" />
+		<result column="sex" property="sex" jdbcType="VARCHAR" />
+		<result column="age" property="age" jdbcType="VARCHAR" />
+		<result column="ageunit" property="ageunit" jdbcType="VARCHAR" />
+		<result column="bednum" property="bednum" jdbcType="VARCHAR" />
+		<result column="pid" property="pid" jdbcType="VARCHAR" />
+		<result column="DptName" property="dptname" jdbcType="VARCHAR" />
+		<result column="DctName" property="dctname" jdbcType="VARCHAR" />
+		<result column="PatType" property="pattype" jdbcType="VARCHAR" />
+		<result column="lczd" property="lczd" jdbcType="VARCHAR" />
+		<result column="barcode" property="barcode" jdbcType="VARCHAR" />
+		<result column="memo" property="memo" jdbcType="VARCHAR" />
+		<result column="RegName" property="regname" jdbcType="DATE" />
+		<result column="FeeName" property="feename" jdbcType="VARCHAR" />
+		<result column="TestType" property="testtype" jdbcType="VARCHAR" />
+		<result column="TestOpt" property="testopt" jdbcType="VARCHAR" />
+		<result column="CheckOpt" property="checkopt" jdbcType="VARCHAR" />
+		<result column="CheckDate" property="checkdate" jdbcType="VARCHAR" />
+		<result column="PrintOpt" property="printopt" jdbcType="VARCHAR" />
+		<result column="PrintDate" property="printdate" jdbcType="VARCHAR" />
+		<result column="PrintState" property="printstate" jdbcType="VARCHAR" />
+		<result column="AreaCode" property="areacode" jdbcType="VARCHAR" />
+		<result column="FilePath" property="filepath" jdbcType="VARCHAR" />
+		<result column="reserve1" property="reserve1" jdbcType="VARCHAR" />
+		<result column="reserve2" property="reserve2" jdbcType="VARCHAR" />
+		<result column="reserve3" property="reserve3" jdbcType="VARCHAR" />
+		<result column="reserve4" property="reserve4" jdbcType="VARCHAR" />
+	</resultMap>
+
+	<sql id="Example_Where_Clause" >
+		<where >
+			<foreach collection="oredCriteria" item="criteria" separator="or" >
+				<if test="criteria.valid" >
+					<trim prefix="(" suffix=")" prefixOverrides="and" >
+						<foreach collection="criteria.criteria" item="criterion" >
+							<choose >
+								<when test="criterion.noValue" >
+									and ${criterion.condition}
+								</when>
+								<when test="criterion.singleValue" >
+									and ${criterion.condition} #{criterion.value}
+								</when>
+								<when test="criterion.betweenValue" >
+									and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+								</when>
+								<when test="criterion.listValue" >
+									and ${criterion.condition}
+									<foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+										#{listItem}
+									</foreach>
+								</when>
+							</choose>
+						</foreach>
+					</trim>
+				</if>
+			</foreach>
+		</where>
+	</sql>
+
+	<sql id="Update_By_Example_Where_Clause" >
+		<where >
+			<foreach collection="example.oredCriteria" item="criteria" separator="or" >
+				<if test="criteria.valid" >
+					<trim prefix="(" suffix=")" prefixOverrides="and" >
+						<foreach collection="criteria.criteria" item="criterion" >
+							<choose >
+								<when test="criterion.noValue" >
+									and ${criterion.condition}
+								</when>
+								<when test="criterion.singleValue" >
+									and ${criterion.condition} #{criterion.value}
+								</when>
+								<when test="criterion.betweenValue" >
+									and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+								</when>
+								<when test="criterion.listValue" >
+									and ${criterion.condition}
+									<foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+										#{listItem}
+									</foreach>
+								</when>
+							</choose>
+						</foreach>
+					</trim>
+				</if>
+			</foreach>
+		</where>
+	</sql>
+
+	<sql id="Base_Column_List" >
+		ID, hospital_code, PatInfoId, testdate, name, pycode, sex, age, ageunit, bednum, 
+		pid, DptName, DctName, PatType, lczd, barcode, memo, RegName, FeeName, TestType, 
+		TestOpt, CheckOpt, CheckDate, PrintOpt, PrintDate, PrintState, AreaCode, FilePath, 
+		reserve1, reserve2, reserve3, reserve4
+	</sql>
+
+	<select id="selectByExample" resultMap="BaseResultMap" parameterType="com.jfsoft.model.TcLisPatientinfoExample" >
+		select
+		<if test="distinct" >
+			distinct
+		</if>
+		<include refid="Base_Column_List" />
+		from tc_lis_patientinfo
+		<if test="_parameter != null" >
+			<include refid="Example_Where_Clause" />
+		</if>
+		<if test="orderByClause != null" >
+			order by ${orderByClause}
+		</if>
+	</select>
+
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+		select 
+		<include refid="Base_Column_List" />
+		from tc_lis_patientinfo
+		where ID = #{id,jdbcType=INTEGER}
+	</select>
+
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+		delete from tc_lis_patientinfo
+		where ID = #{id,jdbcType=INTEGER}
+	</delete>
+
+	<delete id="deleteByExample" parameterType="com.jfsoft.model.TcLisPatientinfoExample" >
+		delete from tc_lis_patientinfo
+		<if test="_parameter != null" >
+			<include refid="Example_Where_Clause" />
+		</if>
+	</delete>
+
+	<insert id="insert" parameterType="com.jfsoft.model.TcLisPatientinfo" >
+		insert into tc_lis_patientinfo (ID, hospital_code, PatInfoId, 
+			testdate, name, pycode, 
+			sex, age, ageunit, bednum, 
+			pid, DptName, DctName, 
+			PatType, lczd, barcode, 
+			memo, RegName, FeeName, 
+			TestType, TestOpt, CheckOpt, 
+			CheckDate, PrintOpt, PrintDate, 
+			PrintState, AreaCode, FilePath, 
+			reserve1, reserve2, reserve3, 
+			reserve4)
+		values (#{id,jdbcType=INTEGER}, #{hospitalCode,jdbcType=VARCHAR}, #{patinfoid,jdbcType=INTEGER}, 
+			#{testdate,jdbcType=DATE}, #{name,jdbcType=VARCHAR}, #{pycode,jdbcType=VARCHAR}, 
+			#{sex,jdbcType=VARCHAR}, #{age,jdbcType=VARCHAR}, #{ageunit,jdbcType=VARCHAR}, #{bednum,jdbcType=VARCHAR}, 
+			#{pid,jdbcType=VARCHAR}, #{dptname,jdbcType=VARCHAR}, #{dctname,jdbcType=VARCHAR}, 
+			#{pattype,jdbcType=VARCHAR}, #{lczd,jdbcType=VARCHAR}, #{barcode,jdbcType=VARCHAR}, 
+			#{memo,jdbcType=VARCHAR}, #{regname,jdbcType=DATE}, #{feename,jdbcType=VARCHAR}, 
+			#{testtype,jdbcType=VARCHAR}, #{testopt,jdbcType=VARCHAR}, #{checkopt,jdbcType=VARCHAR}, 
+			#{checkdate,jdbcType=VARCHAR}, #{printopt,jdbcType=VARCHAR}, #{printdate,jdbcType=VARCHAR}, 
+			#{printstate,jdbcType=VARCHAR}, #{areacode,jdbcType=VARCHAR}, #{filepath,jdbcType=VARCHAR}, 
+			#{reserve1,jdbcType=VARCHAR}, #{reserve2,jdbcType=VARCHAR}, #{reserve3,jdbcType=VARCHAR}, 
+			#{reserve4,jdbcType=VARCHAR})
+	</insert>
+
+	<insert id="insertSelective" parameterType="com.jfsoft.model.TcLisPatientinfo" >
+		insert into tc_lis_patientinfo
+		<trim prefix="(" suffix=")" suffixOverrides="," >
+			<if test="id != null" >
+				ID,
+			</if>
+			<if test="hospitalCode != null" >
+				hospital_code,
+			</if>
+			<if test="patinfoid != null" >
+				PatInfoId,
+			</if>
+			<if test="testdate != null" >
+				testdate,
+			</if>
+			<if test="name != null" >
+				name,
+			</if>
+			<if test="pycode != null" >
+				pycode,
+			</if>
+			<if test="sex != null" >
+				sex,
+			</if>
+			<if test="age != null" >
+				age,
+			</if>
+			<if test="ageunit != null" >
+				ageunit,
+			</if>
+			<if test="bednum != null" >
+				bednum,
+			</if>
+			<if test="pid != null" >
+				pid,
+			</if>
+			<if test="dptname != null" >
+				DptName,
+			</if>
+			<if test="dctname != null" >
+				DctName,
+			</if>
+			<if test="pattype != null" >
+				PatType,
+			</if>
+			<if test="lczd != null" >
+				lczd,
+			</if>
+			<if test="barcode != null" >
+				barcode,
+			</if>
+			<if test="memo != null" >
+				memo,
+			</if>
+			<if test="regname != null" >
+				RegName,
+			</if>
+			<if test="feename != null" >
+				FeeName,
+			</if>
+			<if test="testtype != null" >
+				TestType,
+			</if>
+			<if test="testopt != null" >
+				TestOpt,
+			</if>
+			<if test="checkopt != null" >
+				CheckOpt,
+			</if>
+			<if test="checkdate != null" >
+				CheckDate,
+			</if>
+			<if test="printopt != null" >
+				PrintOpt,
+			</if>
+			<if test="printdate != null" >
+				PrintDate,
+			</if>
+			<if test="printstate != null" >
+				PrintState,
+			</if>
+			<if test="areacode != null" >
+				AreaCode,
+			</if>
+			<if test="filepath != null" >
+				FilePath,
+			</if>
+			<if test="reserve1 != null" >
+				reserve1,
+			</if>
+			<if test="reserve2 != null" >
+				reserve2,
+			</if>
+			<if test="reserve3 != null" >
+				reserve3,
+			</if>
+			<if test="reserve4 != null" >
+				reserve4,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides="," >
+			<if test="id != null" >
+				#{id,jdbcType=INTEGER},
+			</if>
+			<if test="hospitalCode != null" >
+				#{hospitalCode,jdbcType=VARCHAR},
+			</if>
+			<if test="patinfoid != null" >
+				#{patinfoid,jdbcType=INTEGER},
+			</if>
+			<if test="testdate != null" >
+				#{testdate,jdbcType=DATE},
+			</if>
+			<if test="name != null" >
+				#{name,jdbcType=VARCHAR},
+			</if>
+			<if test="pycode != null" >
+				#{pycode,jdbcType=VARCHAR},
+			</if>
+			<if test="sex != null" >
+				#{sex,jdbcType=VARCHAR},
+			</if>
+			<if test="age != null" >
+				#{age,jdbcType=VARCHAR},
+			</if>
+			<if test="ageunit != null" >
+				#{ageunit,jdbcType=VARCHAR},
+			</if>
+			<if test="bednum != null" >
+				#{bednum,jdbcType=VARCHAR},
+			</if>
+			<if test="pid != null" >
+				#{pid,jdbcType=VARCHAR},
+			</if>
+			<if test="dptname != null" >
+				#{dptname,jdbcType=VARCHAR},
+			</if>
+			<if test="dctname != null" >
+				#{dctname,jdbcType=VARCHAR},
+			</if>
+			<if test="pattype != null" >
+				#{pattype,jdbcType=VARCHAR},
+			</if>
+			<if test="lczd != null" >
+				#{lczd,jdbcType=VARCHAR},
+			</if>
+			<if test="barcode != null" >
+				#{barcode,jdbcType=VARCHAR},
+			</if>
+			<if test="memo != null" >
+				#{memo,jdbcType=VARCHAR},
+			</if>
+			<if test="regname != null" >
+				#{regname,jdbcType=DATE},
+			</if>
+			<if test="feename != null" >
+				#{feename,jdbcType=VARCHAR},
+			</if>
+			<if test="testtype != null" >
+				#{testtype,jdbcType=VARCHAR},
+			</if>
+			<if test="testopt != null" >
+				#{testopt,jdbcType=VARCHAR},
+			</if>
+			<if test="checkopt != null" >
+				#{checkopt,jdbcType=VARCHAR},
+			</if>
+			<if test="checkdate != null" >
+				#{checkdate,jdbcType=VARCHAR},
+			</if>
+			<if test="printopt != null" >
+				#{printopt,jdbcType=VARCHAR},
+			</if>
+			<if test="printdate != null" >
+				#{printdate,jdbcType=VARCHAR},
+			</if>
+			<if test="printstate != null" >
+				#{printstate,jdbcType=VARCHAR},
+			</if>
+			<if test="areacode != null" >
+				#{areacode,jdbcType=VARCHAR},
+			</if>
+			<if test="filepath != null" >
+				#{filepath,jdbcType=VARCHAR},
+			</if>
+			<if test="reserve1 != null" >
+				#{reserve1,jdbcType=VARCHAR},
+			</if>
+			<if test="reserve2 != null" >
+				#{reserve2,jdbcType=VARCHAR},
+			</if>
+			<if test="reserve3 != null" >
+				#{reserve3,jdbcType=VARCHAR},
+			</if>
+			<if test="reserve4 != null" >
+				#{reserve4,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+
+	<select id="countByExample" parameterType="com.jfsoft.model.TcLisPatientinfoExample" resultType="java.lang.Integer" >
+		select count(*) from tc_lis_patientinfo
+		<if test="_parameter != null" >
+			<include refid="Example_Where_Clause" />
+		</if>
+	</select>
+
+	<update id="updateByExampleSelective" parameterType="map" >
+		update tc_lis_patientinfo
+		<set >
+			<if test="record.id != null" >
+				ID = #{record.id,jdbcType=INTEGER},
+			</if>
+			<if test="record.hospitalCode != null" >
+				hospital_code = #{record.hospitalCode,jdbcType=VARCHAR},
+			</if>
+			<if test="record.patinfoid != null" >
+				PatInfoId = #{record.patinfoid,jdbcType=INTEGER},
+			</if>
+			<if test="record.testdate != null" >
+				testdate = #{record.testdate,jdbcType=DATE},
+			</if>
+			<if test="record.name != null" >
+				name = #{record.name,jdbcType=VARCHAR},
+			</if>
+			<if test="record.pycode != null" >
+				pycode = #{record.pycode,jdbcType=VARCHAR},
+			</if>
+			<if test="record.sex != null" >
+				sex = #{record.sex,jdbcType=VARCHAR},
+			</if>
+			<if test="record.age != null" >
+				age = #{record.age,jdbcType=VARCHAR},
+			</if>
+			<if test="record.ageunit != null" >
+				ageunit = #{record.ageunit,jdbcType=VARCHAR},
+			</if>
+			<if test="record.bednum != null" >
+				bednum = #{record.bednum,jdbcType=VARCHAR},
+			</if>
+			<if test="record.pid != null" >
+				pid = #{record.pid,jdbcType=VARCHAR},
+			</if>
+			<if test="record.dptname != null" >
+				DptName = #{record.dptname,jdbcType=VARCHAR},
+			</if>
+			<if test="record.dctname != null" >
+				DctName = #{record.dctname,jdbcType=VARCHAR},
+			</if>
+			<if test="record.pattype != null" >
+				PatType = #{record.pattype,jdbcType=VARCHAR},
+			</if>
+			<if test="record.lczd != null" >
+				lczd = #{record.lczd,jdbcType=VARCHAR},
+			</if>
+			<if test="record.barcode != null" >
+				barcode = #{record.barcode,jdbcType=VARCHAR},
+			</if>
+			<if test="record.memo != null" >
+				memo = #{record.memo,jdbcType=VARCHAR},
+			</if>
+			<if test="record.regname != null" >
+				RegName = #{record.regname,jdbcType=DATE},
+			</if>
+			<if test="record.feename != null" >
+				FeeName = #{record.feename,jdbcType=VARCHAR},
+			</if>
+			<if test="record.testtype != null" >
+				TestType = #{record.testtype,jdbcType=VARCHAR},
+			</if>
+			<if test="record.testopt != null" >
+				TestOpt = #{record.testopt,jdbcType=VARCHAR},
+			</if>
+			<if test="record.checkopt != null" >
+				CheckOpt = #{record.checkopt,jdbcType=VARCHAR},
+			</if>
+			<if test="record.checkdate != null" >
+				CheckDate = #{record.checkdate,jdbcType=VARCHAR},
+			</if>
+			<if test="record.printopt != null" >
+				PrintOpt = #{record.printopt,jdbcType=VARCHAR},
+			</if>
+			<if test="record.printdate != null" >
+				PrintDate = #{record.printdate,jdbcType=VARCHAR},
+			</if>
+			<if test="record.printstate != null" >
+				PrintState = #{record.printstate,jdbcType=VARCHAR},
+			</if>
+			<if test="record.areacode != null" >
+				AreaCode = #{record.areacode,jdbcType=VARCHAR},
+			</if>
+			<if test="record.filepath != null" >
+				FilePath = #{record.filepath,jdbcType=VARCHAR},
+			</if>
+			<if test="record.reserve1 != null" >
+				reserve1 = #{record.reserve1,jdbcType=VARCHAR},
+			</if>
+			<if test="record.reserve2 != null" >
+				reserve2 = #{record.reserve2,jdbcType=VARCHAR},
+			</if>
+			<if test="record.reserve3 != null" >
+				reserve3 = #{record.reserve3,jdbcType=VARCHAR},
+			</if>
+			<if test="record.reserve4 != null" >
+				reserve4 = #{record.reserve4,jdbcType=VARCHAR},
+			</if>
+		</set>
+		<if test="_parameter != null" >
+			<include refid="Update_By_Example_Where_Clause" />
+		</if>
+	</update>
+
+	<update id="updateByExample" parameterType="map" >
+		update tc_lis_patientinfo
+		set ID = #{record.id,jdbcType=INTEGER},
+			hospital_code = #{record.hospitalCode,jdbcType=VARCHAR},
+			PatInfoId = #{record.patinfoid,jdbcType=INTEGER},
+			testdate = #{record.testdate,jdbcType=DATE},
+			name = #{record.name,jdbcType=VARCHAR},
+			pycode = #{record.pycode,jdbcType=VARCHAR},
+			sex = #{record.sex,jdbcType=VARCHAR},
+			age = #{record.age,jdbcType=VARCHAR},
+			ageunit = #{record.ageunit,jdbcType=VARCHAR},
+			bednum = #{record.bednum,jdbcType=VARCHAR},
+			pid = #{record.pid,jdbcType=VARCHAR},
+			DptName = #{record.dptname,jdbcType=VARCHAR},
+			DctName = #{record.dctname,jdbcType=VARCHAR},
+			PatType = #{record.pattype,jdbcType=VARCHAR},
+			lczd = #{record.lczd,jdbcType=VARCHAR},
+			barcode = #{record.barcode,jdbcType=VARCHAR},
+			memo = #{record.memo,jdbcType=VARCHAR},
+			RegName = #{record.regname,jdbcType=DATE},
+			FeeName = #{record.feename,jdbcType=VARCHAR},
+			TestType = #{record.testtype,jdbcType=VARCHAR},
+			TestOpt = #{record.testopt,jdbcType=VARCHAR},
+			CheckOpt = #{record.checkopt,jdbcType=VARCHAR},
+			CheckDate = #{record.checkdate,jdbcType=VARCHAR},
+			PrintOpt = #{record.printopt,jdbcType=VARCHAR},
+			PrintDate = #{record.printdate,jdbcType=VARCHAR},
+			PrintState = #{record.printstate,jdbcType=VARCHAR},
+			AreaCode = #{record.areacode,jdbcType=VARCHAR},
+			FilePath = #{record.filepath,jdbcType=VARCHAR},
+			reserve1 = #{record.reserve1,jdbcType=VARCHAR},
+			reserve2 = #{record.reserve2,jdbcType=VARCHAR},
+			reserve3 = #{record.reserve3,jdbcType=VARCHAR},
+			reserve4 = #{record.reserve4,jdbcType=VARCHAR}
+		<if test="_parameter != null" >
+			<include refid="Update_By_Example_Where_Clause" />
+		</if>
+	</update>
+
+	<update id="updateByPrimaryKeySelective" parameterType="com.jfsoft.model.TcLisPatientinfo" >
+		update tc_lis_patientinfo
+		<set >
+			<if test="hospitalCode != null" >
+				hospital_code = #{hospitalCode,jdbcType=VARCHAR},
+			</if>
+			<if test="patinfoid != null" >
+				PatInfoId = #{patinfoid,jdbcType=INTEGER},
+			</if>
+			<if test="testdate != null" >
+				testdate = #{testdate,jdbcType=DATE},
+			</if>
+			<if test="name != null" >
+				name = #{name,jdbcType=VARCHAR},
+			</if>
+			<if test="pycode != null" >
+				pycode = #{pycode,jdbcType=VARCHAR},
+			</if>
+			<if test="sex != null" >
+				sex = #{sex,jdbcType=VARCHAR},
+			</if>
+			<if test="age != null" >
+				age = #{age,jdbcType=VARCHAR},
+			</if>
+			<if test="ageunit != null" >
+				ageunit = #{ageunit,jdbcType=VARCHAR},
+			</if>
+			<if test="bednum != null" >
+				bednum = #{bednum,jdbcType=VARCHAR},
+			</if>
+			<if test="pid != null" >
+				pid = #{pid,jdbcType=VARCHAR},
+			</if>
+			<if test="dptname != null" >
+				DptName = #{dptname,jdbcType=VARCHAR},
+			</if>
+			<if test="dctname != null" >
+				DctName = #{dctname,jdbcType=VARCHAR},
+			</if>
+			<if test="pattype != null" >
+				PatType = #{pattype,jdbcType=VARCHAR},
+			</if>
+			<if test="lczd != null" >
+				lczd = #{lczd,jdbcType=VARCHAR},
+			</if>
+			<if test="barcode != null" >
+				barcode = #{barcode,jdbcType=VARCHAR},
+			</if>
+			<if test="memo != null" >
+				memo = #{memo,jdbcType=VARCHAR},
+			</if>
+			<if test="regname != null" >
+				RegName = #{regname,jdbcType=DATE},
+			</if>
+			<if test="feename != null" >
+				FeeName = #{feename,jdbcType=VARCHAR},
+			</if>
+			<if test="testtype != null" >
+				TestType = #{testtype,jdbcType=VARCHAR},
+			</if>
+			<if test="testopt != null" >
+				TestOpt = #{testopt,jdbcType=VARCHAR},
+			</if>
+			<if test="checkopt != null" >
+				CheckOpt = #{checkopt,jdbcType=VARCHAR},
+			</if>
+			<if test="checkdate != null" >
+				CheckDate = #{checkdate,jdbcType=VARCHAR},
+			</if>
+			<if test="printopt != null" >
+				PrintOpt = #{printopt,jdbcType=VARCHAR},
+			</if>
+			<if test="printdate != null" >
+				PrintDate = #{printdate,jdbcType=VARCHAR},
+			</if>
+			<if test="printstate != null" >
+				PrintState = #{printstate,jdbcType=VARCHAR},
+			</if>
+			<if test="areacode != null" >
+				AreaCode = #{areacode,jdbcType=VARCHAR},
+			</if>
+			<if test="filepath != null" >
+				FilePath = #{filepath,jdbcType=VARCHAR},
+			</if>
+			<if test="reserve1 != null" >
+				reserve1 = #{reserve1,jdbcType=VARCHAR},
+			</if>
+			<if test="reserve2 != null" >
+				reserve2 = #{reserve2,jdbcType=VARCHAR},
+			</if>
+			<if test="reserve3 != null" >
+				reserve3 = #{reserve3,jdbcType=VARCHAR},
+			</if>
+			<if test="reserve4 != null" >
+				reserve4 = #{reserve4,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where ID = #{id,jdbcType=INTEGER}
+	</update>
+
+	<update id="updateByPrimaryKey" parameterType="com.jfsoft.model.TcLisPatientinfo" >
+		update tc_lis_patientinfo
+		set hospital_code = #{hospitalCode,jdbcType=VARCHAR},
+			PatInfoId = #{patinfoid,jdbcType=INTEGER},
+			testdate = #{testdate,jdbcType=DATE},
+			name = #{name,jdbcType=VARCHAR},
+			pycode = #{pycode,jdbcType=VARCHAR},
+			sex = #{sex,jdbcType=VARCHAR},
+			age = #{age,jdbcType=VARCHAR},
+			ageunit = #{ageunit,jdbcType=VARCHAR},
+			bednum = #{bednum,jdbcType=VARCHAR},
+			pid = #{pid,jdbcType=VARCHAR},
+			DptName = #{dptname,jdbcType=VARCHAR},
+			DctName = #{dctname,jdbcType=VARCHAR},
+			PatType = #{pattype,jdbcType=VARCHAR},
+			lczd = #{lczd,jdbcType=VARCHAR},
+			barcode = #{barcode,jdbcType=VARCHAR},
+			memo = #{memo,jdbcType=VARCHAR},
+			RegName = #{regname,jdbcType=DATE},
+			FeeName = #{feename,jdbcType=VARCHAR},
+			TestType = #{testtype,jdbcType=VARCHAR},
+			TestOpt = #{testopt,jdbcType=VARCHAR},
+			CheckOpt = #{checkopt,jdbcType=VARCHAR},
+			CheckDate = #{checkdate,jdbcType=VARCHAR},
+			PrintOpt = #{printopt,jdbcType=VARCHAR},
+			PrintDate = #{printdate,jdbcType=VARCHAR},
+			PrintState = #{printstate,jdbcType=VARCHAR},
+			AreaCode = #{areacode,jdbcType=VARCHAR},
+			FilePath = #{filepath,jdbcType=VARCHAR},
+			reserve1 = #{reserve1,jdbcType=VARCHAR},
+			reserve2 = #{reserve2,jdbcType=VARCHAR},
+			reserve3 = #{reserve3,jdbcType=VARCHAR},
+			reserve4 = #{reserve4,jdbcType=VARCHAR}
+		where ID = #{id,jdbcType=INTEGER}
+	</update>
+
+</mapper>
