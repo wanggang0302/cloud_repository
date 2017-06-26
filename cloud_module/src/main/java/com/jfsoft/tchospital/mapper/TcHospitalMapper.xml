@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jfsoft.mapper.TcHospitalMapper" >
+	<resultMap id="BaseResultMap" type="com.jfsoft.model.TcHospital" >
+		<id column="ID" property="id" jdbcType="INTEGER" />
+		<result column="hospital_code" property="hospitalCode" jdbcType="VARCHAR" />
+		<result column="hospital_name" property="hospitalName" jdbcType="VARCHAR" />
+		<result column="hospital_address" property="hospitalAddress" jdbcType="VARCHAR" />
+		<result column="hospital_tel" property="hospitalTel" jdbcType="VARCHAR" />
+		<result column="areacode" property="areacode" jdbcType="VARCHAR" />
+	</resultMap>
+
+	<sql id="Example_Where_Clause" >
+		<where >
+			<foreach collection="oredCriteria" item="criteria" separator="or" >
+				<if test="criteria.valid" >
+					<trim prefix="(" suffix=")" prefixOverrides="and" >
+						<foreach collection="criteria.criteria" item="criterion" >
+							<choose >
+								<when test="criterion.noValue" >
+									and ${criterion.condition}
+								</when>
+								<when test="criterion.singleValue" >
+									and ${criterion.condition} #{criterion.value}
+								</when>
+								<when test="criterion.betweenValue" >
+									and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+								</when>
+								<when test="criterion.listValue" >
+									and ${criterion.condition}
+									<foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+										#{listItem}
+									</foreach>
+								</when>
+							</choose>
+						</foreach>
+					</trim>
+				</if>
+			</foreach>
+		</where>
+	</sql>
+
+	<sql id="Update_By_Example_Where_Clause" >
+		<where >
+			<foreach collection="example.oredCriteria" item="criteria" separator="or" >
+				<if test="criteria.valid" >
+					<trim prefix="(" suffix=")" prefixOverrides="and" >
+						<foreach collection="criteria.criteria" item="criterion" >
+							<choose >
+								<when test="criterion.noValue" >
+									and ${criterion.condition}
+								</when>
+								<when test="criterion.singleValue" >
+									and ${criterion.condition} #{criterion.value}
+								</when>
+								<when test="criterion.betweenValue" >
+									and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+								</when>
+								<when test="criterion.listValue" >
+									and ${criterion.condition}
+									<foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+										#{listItem}
+									</foreach>
+								</when>
+							</choose>
+						</foreach>
+					</trim>
+				</if>
+			</foreach>
+		</where>
+	</sql>
+
+	<sql id="Base_Column_List" >
+		ID, hospital_code, hospital_name, hospital_address, hospital_tel, areacode
+	</sql>
+
+	<select id="selectByExample" resultMap="BaseResultMap" parameterType="com.jfsoft.model.TcHospitalExample" >
+		select
+		<if test="distinct" >
+			distinct
+		</if>
+		<include refid="Base_Column_List" />
+		from tc_hospital
+		<if test="_parameter != null" >
+			<include refid="Example_Where_Clause" />
+		</if>
+		<if test="orderByClause != null" >
+			order by ${orderByClause}
+		</if>
+	</select>
+
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+		select 
+		<include refid="Base_Column_List" />
+		from tc_hospital
+		where ID = #{id,jdbcType=INTEGER}
+	</select>
+
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+		delete from tc_hospital
+		where ID = #{id,jdbcType=INTEGER}
+	</delete>
+
+	<delete id="deleteByExample" parameterType="com.jfsoft.model.TcHospitalExample" >
+		delete from tc_hospital
+		<if test="_parameter != null" >
+			<include refid="Example_Where_Clause" />
+		</if>
+	</delete>
+
+	<insert id="insert" parameterType="com.jfsoft.model.TcHospital" >
+		insert into tc_hospital (ID, hospital_code, hospital_name, 
+			hospital_address, hospital_tel, areacode
+			)
+		values (#{id,jdbcType=INTEGER}, #{hospitalCode,jdbcType=VARCHAR}, #{hospitalName,jdbcType=VARCHAR}, 
+			#{hospitalAddress,jdbcType=VARCHAR}, #{hospitalTel,jdbcType=VARCHAR}, #{areacode,jdbcType=VARCHAR}
+			)
+	</insert>
+
+	<insert id="insertSelective" parameterType="com.jfsoft.model.TcHospital" >
+		insert into tc_hospital
+		<trim prefix="(" suffix=")" suffixOverrides="," >
+			<if test="id != null" >
+				ID,
+			</if>
+			<if test="hospitalCode != null" >
+				hospital_code,
+			</if>
+			<if test="hospitalName != null" >
+				hospital_name,
+			</if>
+			<if test="hospitalAddress != null" >
+				hospital_address,
+			</if>
+			<if test="hospitalTel != null" >
+				hospital_tel,
+			</if>
+			<if test="areacode != null" >
+				areacode,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides="," >
+			<if test="id != null" >
+				#{id,jdbcType=INTEGER},
+			</if>
+			<if test="hospitalCode != null" >
+				#{hospitalCode,jdbcType=VARCHAR},
+			</if>
+			<if test="hospitalName != null" >
+				#{hospitalName,jdbcType=VARCHAR},
+			</if>
+			<if test="hospitalAddress != null" >
+				#{hospitalAddress,jdbcType=VARCHAR},
+			</if>
+			<if test="hospitalTel != null" >
+				#{hospitalTel,jdbcType=VARCHAR},
+			</if>
+			<if test="areacode != null" >
+				#{areacode,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+
+	<select id="countByExample" parameterType="com.jfsoft.model.TcHospitalExample" resultType="java.lang.Integer" >
+		select count(*) from tc_hospital
+		<if test="_parameter != null" >
+			<include refid="Example_Where_Clause" />
+		</if>
+	</select>
+
+	<update id="updateByExampleSelective" parameterType="map" >
+		update tc_hospital
+		<set >
+			<if test="record.id != null" >
+				ID = #{record.id,jdbcType=INTEGER},
+			</if>
+			<if test="record.hospitalCode != null" >
+				hospital_code = #{record.hospitalCode,jdbcType=VARCHAR},
+			</if>
+			<if test="record.hospitalName != null" >
+				hospital_name = #{record.hospitalName,jdbcType=VARCHAR},
+			</if>
+			<if test="record.hospitalAddress != null" >
+				hospital_address = #{record.hospitalAddress,jdbcType=VARCHAR},
+			</if>
+			<if test="record.hospitalTel != null" >
+				hospital_tel = #{record.hospitalTel,jdbcType=VARCHAR},
+			</if>
+			<if test="record.areacode != null" >
+				areacode = #{record.areacode,jdbcType=VARCHAR},
+			</if>
+		</set>
+		<if test="_parameter != null" >
+			<include refid="Update_By_Example_Where_Clause" />
+		</if>
+	</update>
+
+	<update id="updateByExample" parameterType="map" >
+		update tc_hospital
+		set ID = #{record.id,jdbcType=INTEGER},
+			hospital_code = #{record.hospitalCode,jdbcType=VARCHAR},
+			hospital_name = #{record.hospitalName,jdbcType=VARCHAR},
+			hospital_address = #{record.hospitalAddress,jdbcType=VARCHAR},
+			hospital_tel = #{record.hospitalTel,jdbcType=VARCHAR},
+			areacode = #{record.areacode,jdbcType=VARCHAR}
+		<if test="_parameter != null" >
+			<include refid="Update_By_Example_Where_Clause" />
+		</if>
+	</update>
+
+	<update id="updateByPrimaryKeySelective" parameterType="com.jfsoft.model.TcHospital" >
+		update tc_hospital
+		<set >
+			<if test="hospitalCode != null" >
+				hospital_code = #{hospitalCode,jdbcType=VARCHAR},
+			</if>
+			<if test="hospitalName != null" >
+				hospital_name = #{hospitalName,jdbcType=VARCHAR},
+			</if>
+			<if test="hospitalAddress != null" >
+				hospital_address = #{hospitalAddress,jdbcType=VARCHAR},
+			</if>
+			<if test="hospitalTel != null" >
+				hospital_tel = #{hospitalTel,jdbcType=VARCHAR},
+			</if>
+			<if test="areacode != null" >
+				areacode = #{areacode,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where ID = #{id,jdbcType=INTEGER}
+	</update>
+
+	<update id="updateByPrimaryKey" parameterType="com.jfsoft.model.TcHospital" >
+		update tc_hospital
+		set hospital_code = #{hospitalCode,jdbcType=VARCHAR},
+			hospital_name = #{hospitalName,jdbcType=VARCHAR},
+			hospital_address = #{hospitalAddress,jdbcType=VARCHAR},
+			hospital_tel = #{hospitalTel,jdbcType=VARCHAR},
+			areacode = #{areacode,jdbcType=VARCHAR}
+		where ID = #{id,jdbcType=INTEGER}
+	</update>
+
+</mapper>
