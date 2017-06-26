@@ -7,6 +7,7 @@
       <module fileurl="file://$PROJECT_DIR$/cloud_module/cloud_module.iml" filepath="$PROJECT_DIR$/cloud_module/cloud_module.iml" />
       <module fileurl="file://$PROJECT_DIR$/cloud_repository.iml" filepath="$PROJECT_DIR$/cloud_repository.iml" />
       <module fileurl="file://$PROJECT_DIR$/cloud_web/cloud_web.iml" filepath="$PROJECT_DIR$/cloud_web/cloud_web.iml" />
+      <module fileurl="file://E:\JFYT\JF_SOFT\BS\wx_repository\cloud_data\cloud_repository\cloud_web\cloud_web.iml" filepath="E:\JFYT\JF_SOFT\BS\wx_repository\cloud_data\cloud_repository\cloud_web\cloud_web.iml" />
     </modules>
   </component>
 </project>

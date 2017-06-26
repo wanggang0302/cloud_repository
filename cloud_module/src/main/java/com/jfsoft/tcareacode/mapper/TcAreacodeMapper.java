@@ -7,8 +7,8 @@
  */
 package com.jfsoft.tcareacode.mapper;
 
-import com.jfsoft.model.TcAreacode;
-import com.jfsoft.model.TcAreacodeExample;
+import com.jfsoft.tcareacode.module.TcAreacode;
+import com.jfsoft.tcareacode.module.TcAreacodeExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 

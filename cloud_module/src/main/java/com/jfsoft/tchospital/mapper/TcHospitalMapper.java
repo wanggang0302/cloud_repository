@@ -7,9 +7,10 @@
  */
 package com.jfsoft.tchospital.mapper;
 
-import com.jfsoft.model.TcHospital;
-import com.jfsoft.model.TcHospitalExample;
 import java.util.List;
+
+import com.jfsoft.tchospital.model.TcHospital;
+import com.jfsoft.tchospital.model.TcHospitalExample;
 import org.apache.ibatis.annotations.Param;
 
 public interface TcHospitalMapper {
