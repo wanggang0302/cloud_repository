@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.jfsoft.mapper.TcHospitalGzhMapper" >
-	<resultMap id="BaseResultMap" type="com.jfsoft.model.TcHospitalGzh" >
+<mapper namespace="com.jfsoft.tchospitalgzh.mapper.TcHospitalGzhMapper" >
+	<resultMap id="BaseResultMap" type="com.jfsoft.tchospitalgzh.model.TcHospitalGzh" >
 		<id column="ID" property="id" jdbcType="INTEGER" />
 		<result column="hospital_code" property="hospitalCode" jdbcType="VARCHAR" />
 		<result column="appId" property="appid" jdbcType="VARCHAR" />
@@ -72,7 +72,7 @@
 		ID, hospital_code, appId, appSecret
 	</sql>
 
-	<select id="selectByExample" resultMap="BaseResultMap" parameterType="com.jfsoft.model.TcHospitalGzhExample" >
+	<select id="selectByExample" resultMap="BaseResultMap" parameterType="com.jfsoft.tchospitalgzh.model.TcHospitalGzhExample" >
 		select
 		<if test="distinct" >
 			distinct
@@ -99,21 +99,21 @@
 		where ID = #{id,jdbcType=INTEGER}
 	</delete>
 
-	<delete id="deleteByExample" parameterType="com.jfsoft.model.TcHospitalGzhExample" >
+	<delete id="deleteByExample" parameterType="com.jfsoft.tchospitalgzh.model.TcHospitalGzhExample" >
 		delete from tc_hospital_gzh
 		<if test="_parameter != null" >
 			<include refid="Example_Where_Clause" />
 		</if>
 	</delete>
 
-	<insert id="insert" parameterType="com.jfsoft.model.TcHospitalGzh" >
+	<insert id="insert" parameterType="com.jfsoft.tchospitalgzh.model.TcHospitalGzh" >
 		insert into tc_hospital_gzh (ID, hospital_code, appId, 
 			appSecret)
 		values (#{id,jdbcType=INTEGER}, #{hospitalCode,jdbcType=VARCHAR}, #{appid,jdbcType=VARCHAR}, 
 			#{appsecret,jdbcType=VARCHAR})
 	</insert>
 
-	<insert id="insertSelective" parameterType="com.jfsoft.model.TcHospitalGzh" >
+	<insert id="insertSelective" parameterType="com.jfsoft.tchospitalgzh.model.TcHospitalGzh" >
 		insert into tc_hospital_gzh
 		<trim prefix="(" suffix=")" suffixOverrides="," >
 			<if test="id != null" >
@@ -145,7 +145,7 @@
 		</trim>
 	</insert>
 
-	<select id="countByExample" parameterType="com.jfsoft.model.TcHospitalGzhExample" resultType="java.lang.Integer" >
+	<select id="countByExample" parameterType="com.jfsoft.tchospitalgzh.model.TcHospitalGzhExample" resultType="java.lang.Integer" >
 		select count(*) from tc_hospital_gzh
 		<if test="_parameter != null" >
 			<include refid="Example_Where_Clause" />
@@ -184,7 +184,7 @@
 		</if>
 	</update>
 
-	<update id="updateByPrimaryKeySelective" parameterType="com.jfsoft.model.TcHospitalGzh" >
+	<update id="updateByPrimaryKeySelective" parameterType="com.jfsoft.tchospitalgzh.model.TcHospitalGzh" >
 		update tc_hospital_gzh
 		<set >
 			<if test="hospitalCode != null" >
@@ -200,7 +200,7 @@
 		where ID = #{id,jdbcType=INTEGER}
 	</update>
 
-	<update id="updateByPrimaryKey" parameterType="com.jfsoft.model.TcHospitalGzh" >
+	<update id="updateByPrimaryKey" parameterType="com.jfsoft.tchospitalgzh.model.TcHospitalGzh" >
 		update tc_hospital_gzh
 		set hospital_code = #{hospitalCode,jdbcType=VARCHAR},
 			appId = #{appid,jdbcType=VARCHAR},

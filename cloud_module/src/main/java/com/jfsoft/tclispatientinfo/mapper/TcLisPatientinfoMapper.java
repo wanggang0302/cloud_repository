@@ -7,9 +7,10 @@
  */
 package com.jfsoft.tclispatientinfo.mapper;
 
-import com.jfsoft.model.TcLisPatientinfo;
-import com.jfsoft.model.TcLisPatientinfoExample;
 import java.util.List;
+
+import com.jfsoft.tclispatientinfo.model.TcLisPatientinfo;
+import com.jfsoft.tclispatientinfo.model.TcLisPatientinfoExample;
 import org.apache.ibatis.annotations.Param;
 
 public interface TcLisPatientinfoMapper {

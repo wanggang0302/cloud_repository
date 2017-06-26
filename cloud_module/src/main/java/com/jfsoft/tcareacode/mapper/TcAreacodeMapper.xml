@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.jfsoft.tcareacode.mapper.TcAreacodeMapper" >
-	<resultMap id="BaseResultMap" type="com.jfsoft.model.TcAreacode" >
+	<resultMap id="BaseResultMap" type="com.jfsoft.tcareacode.module.TcAreacode" >
 		<id column="ID" property="id" jdbcType="INTEGER" />
 		<result column="area_code" property="areaCode" jdbcType="VARCHAR" />
 		<result column="area_name" property="areaName" jdbcType="VARCHAR" />
@@ -71,7 +71,7 @@
 		ID, area_code, area_name
 	</sql>
 
-	<select id="selectByExample" resultMap="BaseResultMap" parameterType="com.jfsoft.model.TcAreacodeExample" >
+	<select id="selectByExample" resultMap="BaseResultMap" parameterType="com.jfsoft.tcareacode.module.TcAreacodeExample" >
 		select
 		<if test="distinct" >
 			distinct
@@ -98,21 +98,21 @@
 		where ID = #{id,jdbcType=INTEGER}
 	</delete>
 
-	<delete id="deleteByExample" parameterType="com.jfsoft.model.TcAreacodeExample" >
+	<delete id="deleteByExample" parameterType="com.jfsoft.tcareacode.module.TcAreacodeExample" >
 		delete from tc_areacode
 		<if test="_parameter != null" >
 			<include refid="Example_Where_Clause" />
 		</if>
 	</delete>
 
-	<insert id="insert" parameterType="com.jfsoft.model.TcAreacode" >
+	<insert id="insert" parameterType="com.jfsoft.tcareacode.module.TcAreacode" >
 		insert into tc_areacode (ID, area_code, area_name
 			)
 		values (#{id,jdbcType=INTEGER}, #{areaCode,jdbcType=VARCHAR}, #{areaName,jdbcType=VARCHAR}
 			)
 	</insert>
 
-	<insert id="insertSelective" parameterType="com.jfsoft.model.TcAreacode" >
+	<insert id="insertSelective" parameterType="com.jfsoft.tcareacode.module.TcAreacode" >
 		insert into tc_areacode
 		<trim prefix="(" suffix=")" suffixOverrides="," >
 			<if test="id != null" >
@@ -138,7 +138,7 @@
 		</trim>
 	</insert>
 
-	<select id="countByExample" parameterType="com.jfsoft.model.TcAreacodeExample" resultType="java.lang.Integer" >
+	<select id="countByExample" parameterType="com.jfsoft.tcareacode.module.TcAreacodeExample" resultType="java.lang.Integer" >
 		select count(*) from tc_areacode
 		<if test="_parameter != null" >
 			<include refid="Example_Where_Clause" />
@@ -173,7 +173,7 @@
 		</if>
 	</update>
 
-	<update id="updateByPrimaryKeySelective" parameterType="com.jfsoft.model.TcAreacode" >
+	<update id="updateByPrimaryKeySelective" parameterType="com.jfsoft.tcareacode.module.TcAreacode" >
 		update tc_areacode
 		<set >
 			<if test="areaCode != null" >
@@ -186,7 +186,7 @@
 		where ID = #{id,jdbcType=INTEGER}
 	</update>
 
-	<update id="updateByPrimaryKey" parameterType="com.jfsoft.model.TcAreacode" >
+	<update id="updateByPrimaryKey" parameterType="com.jfsoft.tcareacode.module.TcAreacode" >
 		update tc_areacode
 		set area_code = #{areaCode,jdbcType=VARCHAR},
 			area_name = #{areaName,jdbcType=VARCHAR}

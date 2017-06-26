@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.jfsoft.mapper.TcLisPatientinfoMapper" >
-	<resultMap id="BaseResultMap" type="com.jfsoft.model.TcLisPatientinfo" >
+<mapper namespace="com.jfsoft.tclispatientinfo.mapper.TcLisPatientinfoMapper" >
+	<resultMap id="BaseResultMap" type="com.jfsoft.tclispatientinfo.model.TcLisPatientinfo" >
 		<id column="ID" property="id" jdbcType="INTEGER" />
 		<result column="hospital_code" property="hospitalCode" jdbcType="VARCHAR" />
 		<result column="PatInfoId" property="patinfoid" jdbcType="INTEGER" />
@@ -103,7 +103,7 @@
 		reserve1, reserve2, reserve3, reserve4
 	</sql>
 
-	<select id="selectByExample" resultMap="BaseResultMap" parameterType="com.jfsoft.model.TcLisPatientinfoExample" >
+	<select id="selectByExample" resultMap="BaseResultMap" parameterType="com.jfsoft.tclispatientinfo.model.TcLisPatientinfoExample" >
 		select
 		<if test="distinct" >
 			distinct
@@ -130,14 +130,14 @@
 		where ID = #{id,jdbcType=INTEGER}
 	</delete>
 
-	<delete id="deleteByExample" parameterType="com.jfsoft.model.TcLisPatientinfoExample" >
+	<delete id="deleteByExample" parameterType="com.jfsoft.tclispatientinfo.model.TcLisPatientinfoExample" >
 		delete from tc_lis_patientinfo
 		<if test="_parameter != null" >
 			<include refid="Example_Where_Clause" />
 		</if>
 	</delete>
 
-	<insert id="insert" parameterType="com.jfsoft.model.TcLisPatientinfo" >
+	<insert id="insert" parameterType="com.jfsoft.tclispatientinfo.model.TcLisPatientinfo" >
 		insert into tc_lis_patientinfo (ID, hospital_code, PatInfoId, 
 			testdate, name, pycode, 
 			sex, age, ageunit, bednum, 
@@ -162,7 +162,7 @@
 			#{reserve4,jdbcType=VARCHAR})
 	</insert>
 
-	<insert id="insertSelective" parameterType="com.jfsoft.model.TcLisPatientinfo" >
+	<insert id="insertSelective" parameterType="com.jfsoft.tclispatientinfo.model.TcLisPatientinfo" >
 		insert into tc_lis_patientinfo
 		<trim prefix="(" suffix=")" suffixOverrides="," >
 			<if test="id != null" >
@@ -362,7 +362,7 @@
 		</trim>
 	</insert>
 
-	<select id="countByExample" parameterType="com.jfsoft.model.TcLisPatientinfoExample" resultType="java.lang.Integer" >
+	<select id="countByExample" parameterType="com.jfsoft.tclispatientinfo.model.TcLisPatientinfoExample" resultType="java.lang.Integer" >
 		select count(*) from tc_lis_patientinfo
 		<if test="_parameter != null" >
 			<include refid="Example_Where_Clause" />
@@ -513,7 +513,7 @@
 		</if>
 	</update>
 
-	<update id="updateByPrimaryKeySelective" parameterType="com.jfsoft.model.TcLisPatientinfo" >
+	<update id="updateByPrimaryKeySelective" parameterType="com.jfsoft.tclispatientinfo.model.TcLisPatientinfo" >
 		update tc_lis_patientinfo
 		<set >
 			<if test="hospitalCode != null" >
@@ -613,7 +613,7 @@
 		where ID = #{id,jdbcType=INTEGER}
 	</update>
 
-	<update id="updateByPrimaryKey" parameterType="com.jfsoft.model.TcLisPatientinfo" >
+	<update id="updateByPrimaryKey" parameterType="com.jfsoft.tclispatientinfo.model.TcLisPatientinfo" >
 		update tc_lis_patientinfo
 		set hospital_code = #{hospitalCode,jdbcType=VARCHAR},
 			PatInfoId = #{patinfoid,jdbcType=INTEGER},

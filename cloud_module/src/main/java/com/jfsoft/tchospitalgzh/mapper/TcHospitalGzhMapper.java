@@ -7,9 +7,10 @@
  */
 package com.jfsoft.tchospitalgzh.mapper;
 
-import com.jfsoft.model.TcHospitalGzh;
-import com.jfsoft.model.TcHospitalGzhExample;
 import java.util.List;
+
+import com.jfsoft.tchospitalgzh.model.TcHospitalGzh;
+import com.jfsoft.tchospitalgzh.model.TcHospitalGzhExample;
 import org.apache.ibatis.annotations.Param;
 
 public interface TcHospitalGzhMapper {
