@@ -13,10 +13,10 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="cloud_common" target="1.5" />
-      <module name="cloud_data" target="1.5" />
-      <module name="cloud_module" target="1.5" />
-      <module name="cloud_web" target="1.8" />
+      <module name="cloud_common" target="1.7" />
+      <module name="cloud_data" target="1.7" />
+      <module name="cloud_module" target="1.7" />
+      <module name="cloud_web" target="1.7" />
     </bytecodeTargetLevel>
   </component>
 </project>
