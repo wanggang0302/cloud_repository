@@ -7,10 +7,12 @@
  */
 package com.jfsoft.tclog.mapper;
 
-import com.jfsoft.model.TcLog;
-import com.jfsoft.model.TcLogExample;
-import java.util.List;
+
+import com.jfsoft.tclog.model.TcLog;
+import com.jfsoft.tclog.model.TcLogExample;
 import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 public interface TcLogMapper {
     /**

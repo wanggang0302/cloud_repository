@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.jfsoft.mapper.TcLogMapper" >
-	<resultMap id="BaseResultMap" type="com.jfsoft.model.TcLog" >
+<mapper namespace="com.jfsoft.tclog.mapper.TcLogMapper" >
+	<resultMap id="BaseResultMap" type="com.jfsoft.tclog.model.TcLog" >
 		<id column="ID" property="id" jdbcType="INTEGER" />
 		<result column="up_mech_code" property="upMechCode" jdbcType="VARCHAR" />
 		<result column="up_mech_name" property="upMechName" jdbcType="VARCHAR" />
@@ -74,7 +74,7 @@
 		ID, up_mech_code, up_mech_name, up_date, up_type, up_status
 	</sql>
 
-	<select id="selectByExample" resultMap="BaseResultMap" parameterType="com.jfsoft.model.TcLogExample" >
+	<select id="selectByExample" resultMap="BaseResultMap" parameterType="com.jfsoft.tclog.model.TcLogExample" >
 		select
 		<if test="distinct" >
 			distinct
@@ -101,21 +101,21 @@
 		where ID = #{id,jdbcType=INTEGER}
 	</delete>
 
-	<delete id="deleteByExample" parameterType="com.jfsoft.model.TcLogExample" >
+	<delete id="deleteByExample" parameterType="com.jfsoft.tclog.model.TcLogExample" >
 		delete from tc_log
 		<if test="_parameter != null" >
 			<include refid="Example_Where_Clause" />
 		</if>
 	</delete>
 
-	<insert id="insert" parameterType="com.jfsoft.model.TcLog" >
+	<insert id="insert" parameterType="com.jfsoft.tclog.model.TcLog" >
 		insert into tc_log (ID, up_mech_code, up_mech_name, 
 			up_date, up_type, up_status)
 		values (#{id,jdbcType=INTEGER}, #{upMechCode,jdbcType=VARCHAR}, #{upMechName,jdbcType=VARCHAR}, 
 			#{upDate,jdbcType=DATE}, #{upType,jdbcType=VARCHAR}, #{upStatus,jdbcType=BIT})
 	</insert>
 
-	<insert id="insertSelective" parameterType="com.jfsoft.model.TcLog" >
+	<insert id="insertSelective" parameterType="com.jfsoft.tclog.model.TcLog" >
 		insert into tc_log
 		<trim prefix="(" suffix=")" suffixOverrides="," >
 			<if test="id != null" >
@@ -159,7 +159,7 @@
 		</trim>
 	</insert>
 
-	<select id="countByExample" parameterType="com.jfsoft.model.TcLogExample" resultType="java.lang.Integer" >
+	<select id="countByExample" parameterType="com.jfsoft.tclog.model.TcLogExample" resultType="java.lang.Integer" >
 		select count(*) from tc_log
 		<if test="_parameter != null" >
 			<include refid="Example_Where_Clause" />
@@ -206,7 +206,7 @@
 		</if>
 	</update>
 
-	<update id="updateByPrimaryKeySelective" parameterType="com.jfsoft.model.TcLog" >
+	<update id="updateByPrimaryKeySelective" parameterType="com.jfsoft.tclog.model.TcLog" >
 		update tc_log
 		<set >
 			<if test="upMechCode != null" >
@@ -228,7 +228,7 @@
 		where ID = #{id,jdbcType=INTEGER}
 	</update>
 
-	<update id="updateByPrimaryKey" parameterType="com.jfsoft.model.TcLog" >
+	<update id="updateByPrimaryKey" parameterType="com.jfsoft.tclog.model.TcLog" >
 		update tc_log
 		set up_mech_code = #{upMechCode,jdbcType=VARCHAR},
 			up_mech_name = #{upMechName,jdbcType=VARCHAR},

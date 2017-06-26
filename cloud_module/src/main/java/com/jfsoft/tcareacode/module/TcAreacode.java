@@ -5,7 +5,7 @@
  * -----------------------------------------------
  * 2017-06-26 Created
  */
-package com.jfsoft.tcareacode.model;
+package com.jfsoft.tcareacode.module;
 
 /**
  * 区域编码表

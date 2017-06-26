@@ -7,9 +7,10 @@
  */
 package com.jfsoft.tc_per_checkinfo.mapper;
 
-import com.jfsoft.model.TcPerCheckinfo;
-import com.jfsoft.model.TcPerCheckinfoExample;
 import java.util.List;
+
+import com.jfsoft.tc_per_checkinfo.model.TcPerCheckinfo;
+import com.jfsoft.tc_per_checkinfo.model.TcPerCheckinfoExample;
 import org.apache.ibatis.annotations.Param;
 
 public interface TcPerCheckinfoMapper {
